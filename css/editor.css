@@ -1,0 +1,94 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #338cf4;
+}
+
+.container {
+    background-color: #fff;
+    width: 100vmin;
+    padding: 50px 30px;
+    position: absolute;
+    transform: translate(-50%, -50%);  /* transform : trnaslate (x축기준 이동시킬 값 , y축 기준 이동 시킬 값) */
+    left: 50%;
+    top: 50%;
+    border-radius: 10px;
+    box-shadow: 0 25px 50px rgba(7, 20, 35, 0.2); /* 우측 밑 블러정도 그림자크기 색상*/
+}
+
+
+/* 메뉴 버튼 스타일 */
+.options {
+    display: flex;    /* 부모에서 선언 */
+    flex-wrap: wrap;  /* flex item이 flex container를 벗어났을 때 줄을 바꿈 */
+    align-items: center;    /* 수직 정렬 */
+    gap: 15px;    /* gap between rows and columns */
+}
+
+button {
+    height: 28px;
+    width: 28px;
+    display: grid;
+    place-items: center;  /* align items along both the block and inline directions at once (i.e. the align-items and justify-items properties) in a relevant layout system such as Grid or Flexbox.*/
+    border-radius: 3px;  /* border 가 none인데 왜 설정하지? */
+    border: none;
+    background-color: #fff;
+    outline: none;
+    color: #020929;
+}
+
+/* H1 - H6 */
+select {
+    padding: 7px;
+    border: 1px solid #020929;
+    border-radius: 3px;
+}
+
+.option label,
+.options select {
+    font-family: "Poppins", sans-serif;
+}
+
+/* 글자색 - label. color picker */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+input[type="color"]{
+    appearance: none;
+    background-color: transparent;
+    width: 40px;
+    height: 28px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch{
+    border-radius: 15px;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #020929;
+}
+input[type="color"]::-moz-color-swatch{
+    border-radius: 15px;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #020929;
+}
+
+/* 텍스트 입력 */
+#text-input{
+    margin-top: 10px;
+    border: 1px solid #dddddd;
+    padding: 20px;
+    height: 50vh;
+    width: 100vw;  /* 원 코드에는 없음 */
+}
+
+/* 버튼 활성화 모양 설정 */
+.active {
+    background-color: #e0e9ff;
+}
+
