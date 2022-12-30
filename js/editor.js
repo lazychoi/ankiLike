@@ -408,14 +408,20 @@ const initializer = () => {
             console.log("여기")
             let tmp = document.createElement('img');
             tmp.setAttribute('src', imgUrl.value);
-            tmp.setAttribute('width', "50%");
+            tmp.setAttribute('width', "30%");
+            tmp.style.float = 'left';
+            tmp.style.marginRight = "5px";
+            tmp.style.borderRadius = "10px";
             rng.insertNode(tmp);
             imagePop.style.display = 'none'
         } else        // 맨 끝에 삽입
         {
             let tmp = document.createElement('img');
             tmp.setAttribute('src', imgUrl.value);
-            tmp.setAttribute('width', "50%");
+            tmp.setAttribute('width', "30%");
+            tmp.style.float = 'left';
+            tmp.style.marginRight = "5px";
+            tmp.style.borderRadius = "10px";
             writingArea.appendChild(tmp);           // 이미지 주소가 잘못되었을 때 코드 삽입 필요
             imagePop.style.display = 'none';
         }
