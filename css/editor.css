@@ -27,6 +27,7 @@ body {
     display: flex;    /* 부모에서 선언 */
     flex-wrap: wrap;  /* flex item이 flex container를 벗어났을 때 줄을 바꿈 */
     align-items: center;    /* 수직 정렬 */
+    padding: 4px;
     gap: 18px;    /* gap between rows and columns */
 }
 

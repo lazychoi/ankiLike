@@ -59,49 +59,49 @@ const initializer = () => {
     // 기본 폰트 크기 설정
     fontSizeRef.value = 16;
 
+    //------ 버튼 이벤트(bold, italic, underline, strikethrough, super, sub) ------
     const formatText = ["bold", "italic", "underline", "strikethrough","superscript","subscript"];
 
-    // 글자 모양 변형 함수 - span 태그에 css 토글
-    let changeText = (selected, textFormat) => 
-    {
-        parent = selected.anchorNode.parentElement;
-        rng = selected.getRangeAt(0);
-        txt = selected.toString();   // 선택 영역 문자
-        // console.log(sel.toString(), rng, rng.startOffset, rng.endOffset);
-        // range : 현재 커서가 위치한 node 정보와 위치 index 값이 저장
-        // if ( rng.startOffset == rng.endOffset)
-        if ( rng.collapsed)
-        {
-            console.log("no selection");
-            // return;
-        } else if (parent.classList.contains(textFormat))
-        {
-            parent.classList.toggle(textFormat);    // 텍스트 포맷 제거
-        } else
-        {
-            let tmp = document.createElement('span');
-            tmp.classList.toggle(textFormat)
-            tmp.innerHTML = txt.toString();
-            rng.deleteContents();           // 기존 문자열 제거
-            rng.insertNode(tmp);            // 태그를 추가한 문자열 삽입
-        }
-        window.getSelection().removeAllRanges();  //버튼을 누르면 textarea가 비활성화되었는데도 선택영역으로 보이는 문제 해결
-    };
-    
-
-//------ 버튼 이벤트(bold, italic, underline, strikethrough, super, sub) ------
+    let arrformatText = new Array(); // 버튼 담는 배열 선언
     for(let i=0; i<formatText.length; i++)
     {
         // 버튼을 배열에 담기
-        let arrformatText = new Array();
         arrformatText[i] = document.getElementById(formatText[i]);
         arrformatText[i].addEventListener("click", function() 
         {
-            selected = document.getSelection();
-               
             // span 태그와 css class 추가 함수
-            changeText(selected, formatText[i]);
-            // console.log(formatText[i])
+            selected = document.getSelection();
+            parent = selected.anchorNode.parentElement;
+            rng = selected.getRangeAt(0);
+            txt = selected.toString();   // 선택 영역 문자
+            
+            if (txt.indexOf('\n'))    // 줄바꿈 문자를 <br> 태그로 바꾸기
+            {
+                txt = txt.replace(/\r\n/, '<br>');
+                txt = txt.replace(/\\n/, '<br>');
+                txt = txt.replace(/\n/, '<br>');
+                console.log("바뀐것 => ", txt);
+            }
+            
+            // console.log(sel.toString(), rng, rng.startOffset, rng.endOffset);
+            // range : 현재 커서가 위치한 node 정보와 위치 index 값이 저장
+            // if ( rng.startOffset == rng.endOffset)
+            if ( rng.collapsed)
+            {
+                console.log("no selection");
+                // return;
+            } else if (parent.classList.contains(formatText[i]))
+            {
+                parent.classList.toggle(formatText[i]);    // 텍스트 포맷 제거
+            } else
+            {
+                let tmp = document.createElement('span');
+                tmp.classList.toggle(formatText[i])
+                tmp.innerHTML = txt;
+                rng.deleteContents();           // 기존 문자열 제거
+                rng.insertNode(tmp);            // 태그를 추가한 문자열 삽입
+            }
+            window.getSelection().removeAllRanges();  //버튼을 누르면 textarea가 비활성화되었는데도 선택영역으로 보이는 문제 해결
         });
     }     
 
@@ -200,6 +200,15 @@ const initializer = () => {
         parent = selected.anchorNode.parentElement;
         rng = selected.getRangeAt(0);
         txt = selected.toString(); 
+
+        if (txt.indexOf('\n'))    // 줄바꿈 문자를 <br> 태그로 바꾸기
+        {
+            txt = txt.replace(/\r\n/, '<br>');
+            txt = txt.replace(/\\n/, '<br>');
+            txt = txt.replace(/\n/, '<br>');
+            console.log("바뀐것 => ", txt);
+        }
+
         if ( rng.collapsed)
         {
             console.log("no selection");
@@ -213,7 +222,7 @@ const initializer = () => {
         {
             let tmp = document.createElement('span');
             tmp.style.color = e.target.value;;
-            tmp.innerHTML = txt.toString();
+            tmp.innerHTML = txt;
             rng.deleteContents();           // 기존 문자열 제거
             rng.insertNode(tmp);            // 태그를 추가한 문자열 삽입
         }
@@ -226,6 +235,15 @@ const initializer = () => {
         parent = selected.anchorNode.parentElement;
         rng = selected.getRangeAt(0);
         txt = selected.toString(); 
+
+        if (txt.indexOf('\n'))    // 줄바꿈 문자를 <br> 태그로 바꾸기
+        {
+            txt = txt.replace(/\r\n/, '<br>');
+            txt = txt.replace(/\\n/, '<br>');
+            txt = txt.replace(/\n/, '<br>');
+            console.log("바뀐것 => ", txt);
+        }
+
         if ( rng.collapsed)
         {
             console.log("no selection");
@@ -239,10 +257,11 @@ const initializer = () => {
         {
             let tmp = document.createElement('span');
             tmp.style.backgroundColor = btnBackcolor.value;
-            tmp.innerHTML = txt.toString();
+            tmp.innerHTML = txt;
             rng.deleteContents();           // 기존 문자열 제거
             rng.insertNode(tmp);            // 태그를 추가한 문자열 삽입
         }
+        window.getSelection().removeAllRanges();
     };
 
     btnForecolor.addEventListener("input", clickColor);
@@ -251,7 +270,7 @@ const initializer = () => {
     btnBackcolor.addEventListener("change", clickBackColor );
 
     //----------------------- 버튼 이벤트 headings -----------------------------
-    headings.addEventListener("change", () => 
+    const headingsFunc = () => 
     {
         // 기존과 같은 값을 클릭할 때는 값을 출력하지 않는 문제 발생
 
@@ -268,6 +287,14 @@ const initializer = () => {
             selected.selectAllChildren(parent);
             rng = selected.getRangeAt(0);
             txt = selected.toString(); 
+        }
+
+        if (txt.indexOf('\n'))    // 줄바꿈 문자를 <br> 태그로 바꾸기
+        {
+            txt = txt.replace(/\r\n/, '<br>');
+            txt = txt.replace(/\\n/, '<br>');
+            txt = txt.replace(/\n/, '<br>');
+            console.log("바뀐것 => ", txt);
         }
         // console.log(rng);
         // console.log("지금 선택한 headings =>", headings.value.toLowerCase());
@@ -289,7 +316,11 @@ const initializer = () => {
             rng.deleteContents();           // 기존 문자열 제거
             rng.insertNode(tmp);            // 태그를 추가한 문자열 삽입
         }
-    });
+        window.getSelection().removeAllRanges();
+    };
+
+    // headings.addEventListener("click", headingsFunc);
+    headings.addEventListener("change", headingsFunc);
 
 
     //----------------------- 버튼 이벤트 font 선택 -----------------------------
@@ -300,6 +331,15 @@ const initializer = () => {
         parent = selected.anchorNode.parentElement;
         rng = selected.getRangeAt(0);
         txt = selected.toString(); 
+
+        if (txt.indexOf('\n'))    // 줄바꿈 문자를 <br> 태그로 바꾸기
+        {
+            txt = txt.replace(/\r\n/, '<br>');
+            txt = txt.replace(/\\n/, '<br>');
+            txt = txt.replace(/\n/, '<br>');
+            console.log("바뀐것 => ", txt);
+        }
+
         if ( rng.collapsed)
         {
             console.log("no selection");
@@ -308,7 +348,7 @@ const initializer = () => {
         {
             let tmp = document.createElement('span');
             tmp.style.fontFamily = fontName.value;
-            tmp.innerHTML = txt.toString();
+            tmp.innerHTML = txt;
             rng.deleteContents();           // 기존 문자열 제거
             rng.insertNode(tmp);            // 태그를 추가한 문자열 삽입
         }
@@ -322,6 +362,14 @@ const initializer = () => {
         parent = selected.anchorNode.parentElement;
         rng = selected.getRangeAt(0);
         txt = selected.toString(); 
+
+        if (txt.indexOf('\n'))    // 줄바꿈 문자를 <br> 태그로 바꾸기
+        {
+            txt = txt.replace(/\r\n/, '<br>');
+            txt = txt.replace(/\\n/, '<br>');
+            txt = txt.replace(/\n/, '<br>');
+            console.log("바뀐것 => ", txt);
+        }
         if ( rng.collapsed)
         {
             console.log("no selection");
@@ -330,7 +378,7 @@ const initializer = () => {
         {
             let tmp = document.createElement('span');
             tmp.style.fontSize = `${fontSizeRef.value}px`;
-            tmp.innerHTML = txt.toString();
+            tmp.innerHTML = txt;
             rng.deleteContents();           // 기존 문자열 제거
             rng.insertNode(tmp);            // 태그를 추가한 문자열 삽입
         }
