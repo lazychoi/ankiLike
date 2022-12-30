@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>편집기</title>
-    <link rel="stylesheet" href="editor.css">
+    <link rel="stylesheet" href="css/editor.css">
     <script src="https://kit.fontawesome.com/231eaa05f7.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -24,10 +24,10 @@
             <button id="strikethrough" class="option-button format">
                 <i class="fa-solid fa-strikethrough"></i>
             </button>
-            <button id="superscript" class="option-button">
+            <button id="superscript" class="option-button format">
                 <i class="fa-solid fa-superscript"></i>
             </button>
-            <button id="subscript" class="option-button">
+            <button id="subscript" class="option-button format">
                 <i class="fa-solid fa-subscript"></i>
             </button>
 
@@ -40,20 +40,12 @@
             </button>
 
             <!-- 취소/재실행 -->
-            <button id="undo" class="option-button">
-                <i class="fa-solid fa-rotate-left"></i>
-            </button>
-            <button id="redo" class="option-button">
-                <i class="fa-solid fa-rotate-right"></i>
-            </button>
-
-            <!-- 링크 -->
-            <button id="createLink" class="option-button">
-                <i class="fa fa-link"></i>
-            </button>
-            <button id="unlink" class="option-button">
-                <i class="fa fa-unlink"></i>
-            </button>
+            <!-- <button id="undo" class="option-button"> -->
+                <!-- <i class="fa-solid fa-rotate-left"></i> -->
+            <!-- </button> -->
+            <!-- <button id="redo" class="option-button"> -->
+                <!-- <i class="fa-solid fa-rotate-right"></i> -->
+            <!-- </button> -->
 
             <!-- 정렬 -->
             <button id="justifyLeft" class="option-button align">
@@ -75,6 +67,11 @@
                 <i class="fa-solid fa-outdent"></i>
             </button>
 
+            <!-- 이미지 삽입 -->
+            <button id="createLink" class="option-button">
+                <i class="fa fa-image"></i>
+            </button>
+
             <!-- Headings -->
             <select name="" id="formatBlock" class="adv-option-button">
                 <option value="H1">H1</option>
@@ -83,6 +80,7 @@
                 <option value="H4">H4</option>
                 <option value="H5">H5</option>
                 <option value="H6">H6</option>
+                <option value="mainText">본문</option>
             </select>
 
             <!-- 폰트 -->
@@ -99,10 +97,16 @@
                 <label for="backColor">Highlight color</label>
             </div>
 
-            <div id="text-input" contenteditable="true"></div>
+            <div id="text-input" contenteditable="true">
+                나 보기가 역겨워 가실 때에는 말 없이 고이 보내 드리오리다. <br>
+                영변에 약산 진달래꽃 아름 따다 가실 길에 뿌리오리다. 
+            </div>
+        </div>
+        <div class="imagePop">
+            <input type="url" id="imgUrl">
+            <button type="submit" class="btnimg">확인</button> <button type="reset" class="btnimg">취소</button>
         </div>
     </div>
-
-    <script src="script.js"></script>
+    <script src="js/editor.js"></script>
 </body>
 </html>
