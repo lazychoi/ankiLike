@@ -1,6 +1,6 @@
 # 순수 자바스크립트로 rich text editor 만들기
 
-<img src="https://github.com/lazychoi/ankiLike/blob/main/images/Screenshot2022-12-305.05.37.png?raw=true" width="80%">
+<img src="https://github.com/lazychoi/ankiLike/blob/main/images/Screenshot2022-12-305.05.37.png?raw=true">
 
 - 기간: 2022년 12월 28일 - 30일
 
