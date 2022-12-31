@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container { display:grid ; margin: 0 atuo; grid-template-columns: 1fr 1fr;}
+        .item { padding: 1rem 0rem; margin: 0.2rem 1rem; }
+        .input { border: 1px solid #aaa; width: 45vw; height: 50vh; padding-left: 1rem;}
+        .display { border: 1px solid #aaa; width: 45vw; height: 50vh; padding-left: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">입력 화면</div>
+        <button class="item">결과 화면</button>
+        <div class="input item" contenteditable="true">
+            나 보기가 역겨워 가실 때에는 말 없이 고이 보내 드리오리다.<br>
+            영변에 약산 진달래꽃 아름 따다 가실 길에 뿌리오리다.
+        </div>
+        <div class="display item"></div>
+    </div>
+    <script>
+        const input = document.querySelector(".input");
+        const display = document.querySelector(".display");
+        const btn = document.getElementsByTagName("button");
+        let selected = window.getSelection();
+        btn[0].addEventListener("click", () => 
+        {
+            display.innerHTML = selected.toString();
+        });
+    </script>
+
+</body>
+</html>

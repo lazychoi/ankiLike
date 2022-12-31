@@ -3,6 +3,7 @@
 <img src="https://github.com/lazychoi/ankiLike/blob/main/images/Screenshot2022-12-305.05.37.png?raw=true">
 
 - 기간: 2022년 12월 28일 - 30일
+- [여기를 눌러 사용해볼 수 있다](https://lazychoi.github.io/ankiLike/editor.html)
 
 ## 마친 직후 느낌
 
@@ -12,14 +13,12 @@
 
 구현해야 할 기능과 잡아야 할 버그는 많지만 일단 멈추고 시행착오를 통해 배운 것을 정리하며 난잡한 코드도 정리해야겠다. 
 
-리치 텍스트 편집기는 아래 링크를 눌러 사용해볼 수 있고, 소스 코드는 editor.html, css/editor.css, js/editor.js 세 파일이다.
-
-=> [여기를 눌러 사용해볼 수 있다](https://lazychoi.github.io/ankiLike/editor.html)
+리치 텍스트 편집기는 위 링크를 눌러 사용해볼 수 있고, 소스 코드는 editor.html, css/editor.css, js/editor.js 세 파일이다.
 
 ## 배운 부분 정리(미완성)
 
 - UI
-  - [자바스크립트 map() 함수로 드롭다운 버튼 목록 생성 -> 폰트, 폰트 사이즈](#)
+  - [자바스크립트 map() 함수로 드롭다운 버튼 목록 생성 -> 폰트, 폰트 사이즈](https://github.com/lazychoi/ankiLike/wiki/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-map()-%EC%9C%BC%EB%A1%9C-%EB%93%9C%EB%A1%AD%EB%8B%A4%EC%9A%B4-%EB%B2%84%ED%8A%BC-%EB%AA%A9%EB%A1%9D-%EC%83%9D%EC%84%B1)
 - 자바스크립트
   - [현재 커서 위치의 부모 태그 가져오기](#)
   - [현재 커서 위치의 모든 형제를 선택 영역으로 설정하기](#)

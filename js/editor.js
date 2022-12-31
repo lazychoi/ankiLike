@@ -42,10 +42,10 @@ const initializer = () => {
     
 
     // 폰트 선택 드롭다운 버튼에 폰트 이름 추가
-    fontList.map( (value) => {
+    fontList.map( (el) => {
         let option = document.createElement("option");
-        option.value = value;
-        option.innerHTML = value;
+        option.value = el;
+        option.innerHTML = el;
         fontName.appendChild(option);
     });
 
